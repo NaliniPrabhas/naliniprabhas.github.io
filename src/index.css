@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+/* Design tokens lifted from the reference template's compiled stylesheet. */
+@theme {
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Ubuntu', ui-sans-serif, system-ui, sans-serif;
+
+  --color-navy: #113869;
+  --color-navy-dark: #0f325f;
+  --color-ink: #0d0d11;
+  --color-gray-body: #717171;
+  --color-gray-muted: #666666;
+  --color-surface: #f3f3f3;
+  --color-surface-alt: #eeeeee;
+  --color-line: #e2e2e2;
+  --color-gold: #e0c340;
+  --color-gold-light: #fbcf33;
+  --color-sale: #ea0606;
+
+  --radius-card: 0.375rem;
+}
+
+@layer base {
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+
+  /* Section headings across the template share this treatment. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8;
+}
+
+@utility eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.2em] text-gold;
+}
+
+/* Fade-and-rise on scroll, replacing the template's AOS dependency. */
+@utility reveal {
+  @apply translate-y-4 opacity-0 transition-all duration-700 ease-out;
+}
+
+@utility reveal-in {
+  @apply translate-y-0 opacity-100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
