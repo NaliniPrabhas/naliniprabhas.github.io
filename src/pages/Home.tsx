@@ -9,11 +9,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      {/* Product sections, in nav order: Popular Picks, Specialities
-          (FeaturedProducts), then the category tiles. */}
+      {/* Product sections, in nav order: Popular Picks, Specialities (the
+          Categories tiles), then Explore more categories (FeaturedProducts). */}
       <PopularPicks />
-      <FeaturedProducts />
       <Categories />
+      <FeaturedProducts />
       <AboutBrand />
       <Faq />
     </>

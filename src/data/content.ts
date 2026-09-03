@@ -1,10 +1,12 @@
+import type { ProductCategory } from '../products/types'
+
 /**
  * Hash targets point at homepage section ids, so they work from any route —
  * the router navigates home first, then scrolls.
  */
 export const navLinks = [
   { label: 'Popular Products', to: '/#popular-products' },
-  { label: 'Specialities', to: '/#specialities' },
+  { label: 'Specialities', to: '/specialities' },
   { label: 'Catalog', to: '/collection' },
   { label: 'About Us', to: '/about' },
 ]
@@ -26,23 +28,24 @@ export const popularPicks = [
   '/assets/img/popular-picks-03.jpg',
 ]
 
-export const categories = [
-  {
-    title: 'Hoodies & Sweatshirt',
-    image: '/assets/img/categories-img-01.jpg',
-    to: '/collection?category=hoodies',
-  },
-  {
-    title: 'Shoes & Sneakers',
-    image: '/assets/img/categories-img-02.jpg',
-    to: '/collection?category=shoes',
-  },
-  {
-    title: 'Tees & T-Shirt',
-    image: '/assets/img/categories-img-03.jpg',
-    to: '/collection?category=tees',
-  },
-]
+/**
+ * Homepage Specialities tiles. `title` is typed as ProductCategory so these
+ * cannot drift from the categories the catalog actually filters on, and `to`
+ * is derived from it so each tile lands on its own products.
+ */
+export const categories: { title: ProductCategory; image: string; to: string }[] =
+  (
+    [
+      ['Bamboo Products', '/assets/img/categories-img-01.jpg'],
+      ['Leather Products', '/assets/img/categories-img-02.jpg'],
+      ['Bhut Jolokia', '/assets/img/categories-img-03.jpg'],
+      ['Disposable Products', '/assets/img/popular-picks-01.jpg'],
+    ] as const
+  ).map(([title, image]) => ({
+    title,
+    image,
+    to: `/specialities?category=${encodeURIComponent(title)}`,
+  }))
 
 export const faqs = [
   {
@@ -77,11 +80,12 @@ export const faqs = [
   },
 ]
 
+/** The four things we want a visitor to take away, in the footer trust bar. */
 export const trustBadges = [
-  'Duties and Taxes Guaranteed',
-  'Free Express Shipping',
-  'Customer Love',
-  'Easy Returns',
+  'Quality, No Compromise',
+  'Customer First',
+  'Total Transparency',
+  'Backing Small Suppliers',
 ]
 
 export const socialIcons = [

@@ -3,12 +3,13 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import About from './pages/About'
-import Collection from './pages/Collection'
+import Catalog from './pages/Catalog'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import ProductDetail from './pages/ProductDetail'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import Specialities from './pages/Specialities'
 
 /**
  * Handles scroll position on navigation, which react-router leaves alone:
@@ -41,9 +42,12 @@ export default function App() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/collection" element={<Collection />} />
+          {/* Two views over one product catalogue: the full grid, and the
+              same products filtered by speciality. */}
+          <Route path="/collection" element={<Catalog />} />
+          <Route path="/specialities" element={<Specialities />} />
           <Route path="/about" element={<About />} />
-          <Route path="/product/:slug" element={<ProductDetail />} />
+          <Route path="/product/:productId" element={<ProductDetail />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="*" element={<NotFound />} />

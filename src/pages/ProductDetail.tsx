@@ -2,159 +2,150 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import PageBanner from '../components/PageBanner'
 import ProductCard from '../components/ProductCard'
-import Stars from '../components/Stars'
-import { findProduct, products } from '../data/products'
+import { findProduct, products } from '../products'
 
 const detailTabs = [
-  { key: 'description', label: 'Description', icon: '/assets/img/ic-description.svg' },
+  { key: 'details', label: 'Details', icon: '/assets/img/ic-description.svg' },
   {
     key: 'specifications',
     label: 'Specifications',
     icon: '/assets/img/ic-specifications.svg',
   },
-  { key: 'delivery', label: 'Delivery', icon: '/assets/img/ic-delivery.svg' },
-  { key: 'reviews', label: 'Reviews', icon: '/assets/img/ic-reviews.svg' },
 ] as const
 
+/** Renders one optional attribute row only when the product defines it. */
+function AttributeRow({ label, values }: { label: string; values?: string[] }) {
+  if (!values || values.length === 0) return null
+
+  return (
+    <div className="flex flex-wrap gap-x-3 gap-y-2 py-3">
+      <dt className="w-28 shrink-0 text-sm font-semibold">{label}</dt>
+      <dd className="flex flex-wrap gap-2">
+        {values.map((value) => (
+          <span
+            key={value}
+            className="rounded-card border border-line px-3 py-1 text-sm text-gray-body"
+          >
+            {value}
+          </span>
+        ))}
+      </dd>
+    </div>
+  )
+}
+
 export default function ProductDetail() {
-  const { slug } = useParams<{ slug: string }>()
-  const product = slug ? findProduct(slug) : undefined
+  const { productId } = useParams<{ productId: string }>()
+  const product = productId ? findProduct(productId) : undefined
 
   const [activeTab, setActiveTab] =
-    useState<(typeof detailTabs)[number]['key']>('description')
-  const [size, setSize] = useState<number | null>(null)
-  const [color, setColor] = useState(0)
+    useState<(typeof detailTabs)[number]['key']>('details')
+  const [activeImage, setActiveImage] = useState(0)
 
   if (!product) {
     return (
       <section className="container-page py-24 text-center">
         <h1 className="text-3xl font-bold">Product not found</h1>
         <p className="mt-4 text-gray-body">
-          That item may have sold out or moved.
+          That item may have moved or been renamed.
         </p>
         <Link
-          to="/collection"
+          to="/specialities"
           className="mt-8 inline-block rounded-card bg-navy px-8 py-3.5 text-sm font-semibold text-white"
         >
-          Back to collection
+          Back to Specialities
         </Link>
       </section>
     )
   }
 
-  const related = products.filter((p) => p.slug !== product.slug).slice(0, 3)
+  const related = products
+    .filter((p) => p.productId !== product.productId)
+    .slice(0, 3)
 
   const tabContent: Record<(typeof detailTabs)[number]['key'], string> = {
-    description: product.description,
-    specifications:
-      'Synthetic and textile upper, foam midsole, rubber outsole. Imported. Style code shown on the box label.',
-    delivery:
-      'Free express shipping on orders over $100. Delivery in 2–5 business days. Free returns within 30 days, unworn and in original packaging.',
-    reviews:
-      'Reviews are collected from verified purchases only. This placeholder catalogue has no live review feed connected yet.',
+    details: product.productDetails,
+    specifications: product.productSpecification,
   }
 
   return (
     <>
       <PageBanner
-        title={product.name}
+        title={product.productName}
         crumbs={[
           { label: 'Home', to: '/' },
-          { label: 'Collection', to: '/collection' },
-          { label: product.name },
+          { label: 'Specialities', to: '/specialities' },
+          { label: product.productName },
         ]}
       />
 
       <section className="container-page py-12 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-2">
-          <div className="rounded-card bg-surface p-8">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="mx-auto w-full max-w-md object-contain"
-            />
-          </div>
-
           <div>
-            <p className="text-sm text-gray-body">{product.category}</p>
-            <h1 className="mt-2 text-3xl font-bold sm:text-4xl">
-              {product.name}
-            </h1>
-
-            <div className="mt-4 flex items-center gap-3">
-              <Stars rating={product.rating} />
-              <span className="text-sm text-gray-body">
-                {product.rating}.0 out of 5
-              </span>
+            <div className="overflow-hidden rounded-card bg-surface">
+              <img
+                src={product.productImages[activeImage]}
+                alt={product.productName}
+                className="h-80 w-full object-cover lg:h-[26rem]"
+              />
             </div>
 
-            <p className="mt-6 text-3xl font-bold text-navy">${product.price}</p>
-            <p className="mt-4 font-body leading-relaxed text-gray-body">
-              {product.description}
-            </p>
-
-            <div className="mt-8">
-              <h6 className="text-sm font-semibold">Colour</h6>
-              <div className="mt-3 flex gap-3">
-                {product.colors.map((hex, i) => (
+            {product.productImages.length > 1 && (
+              <div className="mt-4 flex gap-3">
+                {product.productImages.map((image, i) => (
                   <button
-                    key={hex}
+                    key={image}
                     type="button"
-                    onClick={() => setColor(i)}
-                    aria-label={`Colour option ${i + 1}`}
-                    aria-pressed={color === i}
-                    style={{ backgroundColor: hex }}
-                    className={`h-9 w-9 rounded-full border-2 transition-transform ${
-                      color === i
-                        ? 'scale-110 border-navy'
-                        : 'border-line hover:scale-105'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-7">
-              <h6 className="text-sm font-semibold">Size</h6>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {product.sizes.map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    onClick={() => setSize(s)}
-                    aria-pressed={size === s}
-                    className={`min-w-14 rounded-card border px-3 py-2 text-sm font-medium transition-colors ${
-                      size === s
-                        ? 'border-navy bg-navy text-white'
-                        : 'border-line hover:border-navy'
+                    onClick={() => setActiveImage(i)}
+                    aria-label={`View image ${i + 1}`}
+                    aria-pressed={activeImage === i}
+                    className={`h-20 w-20 overflow-hidden rounded-card border-2 transition-colors ${
+                      activeImage === i ? 'border-navy' : 'border-line'
                     }`}
                   >
-                    {s}
+                    <img
+                      src={image}
+                      alt=""
+                      aria-hidden="true"
+                      className="h-full w-full object-cover"
+                    />
                   </button>
                 ))}
               </div>
-            </div>
+            )}
+          </div>
 
-            <div className="mt-9 flex flex-wrap gap-4">
-              {/* Catalogue is browse-only for now — no cart wired up. */}
+          <div>
+            <p className="eyebrow">{product.productCategory}</p>
+            <h1 className="mt-3 text-3xl font-bold sm:text-4xl">
+              {product.productName}
+            </h1>
+
+            {/* Price lives here rather than on the listing cards. */}
+            <p className="mt-6 text-3xl font-bold text-navy">
+              ${product.productPrice}
+            </p>
+
+            <p className="mt-5 font-body leading-relaxed text-gray-body">
+              {product.productDescription}
+            </p>
+
+            {/* Colours, sizes and weights are all optional — most of the
+                catalogue defines only some of them. */}
+            <dl className="mt-8 divide-y divide-line border-y border-line">
+              <AttributeRow label="Colours" values={product.productColors} />
+              <AttributeRow label="Sizes" values={product.productSizes} />
+              <AttributeRow label="Weights" values={product.productWeights} />
+            </dl>
+
+            {/* Catalogue is browse-only for now — no cart wired up. */}
+            <div className="mt-9">
               <a
                 href="#"
-                className="rounded-card bg-navy px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-navy-dark"
+                className="inline-block rounded-card bg-navy px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-navy-dark"
               >
                 Enquire about this item
               </a>
-              <button
-                type="button"
-                aria-label="Save to wishlist"
-                className="flex h-12 w-12 items-center justify-center rounded-card border border-line transition-colors hover:border-navy"
-              >
-                <img
-                  src="/assets/img/ic-like.svg"
-                  alt=""
-                  aria-hidden="true"
-                  className="h-5 w-5"
-                />
-              </button>
             </div>
           </div>
         </div>
@@ -195,14 +186,23 @@ export default function ProductDetail() {
         </div>
 
         {/* Related */}
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold sm:text-3xl">You may also like</h2>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((item) => (
-              <ProductCard key={item.slug} product={item} />
-            ))}
+        {related.length > 0 && (
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold sm:text-3xl">You may also like</h2>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {related.map((item) => (
+                <ProductCard
+                  key={item.productId}
+                  name={item.productName}
+                  category={item.productCategory}
+                  image={item.productImages[0]}
+                  to={`/product/${item.productId}`}
+                  fit="cover"
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </section>
     </>
   )

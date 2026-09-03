@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="max-w-xs">
             <Logo variant="light" />
             <p className="mt-5 text-sm leading-relaxed text-white/70">
-              Complete your style with awesome clothes from us.
+              Your trust, earned with every order.
             </p>
           </div>
 

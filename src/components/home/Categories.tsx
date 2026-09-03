@@ -5,16 +5,14 @@ import Reveal from '../Reveal'
 export default function Categories() {
   return (
     <section
-      id="categories"
+      id="specialities"
       className="container-page scroll-mt-20 py-16 lg:py-24"
     >
       <Reveal>
-        <h2 className="text-3xl font-bold sm:text-4xl">
-          Explore more categories
-        </h2>
+        <h2 className="text-3xl font-bold sm:text-4xl">Specialities</h2>
       </Reveal>
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {categories.map((category, i) => (
           <Reveal key={category.title} delay={i * 90}>
             <Link

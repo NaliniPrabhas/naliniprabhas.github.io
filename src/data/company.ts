@@ -37,20 +37,9 @@ export const company = {
     'Our long-term vision extends beyond sourcing. Nalini and Prabhas aims to evolve into a manufacturing and product-development company rooted in Northeast India, establishing dedicated production, processing, design, and packaging capabilities that transform regional resources into globally competitive products.',
   ],
 
+  /** Leads straight into `focusAreas` on the About page. */
   whatWeDoIntro:
-    'By combining traditional craftsmanship with modern quality standards and design principles, we help bring authentic products from Northeast India to domestic and international markets. Our product portfolio spans a wide range of categories:',
-
-  productCategories: [
-    'Bamboo Furniture',
-    'Bamboo Home Décor and Handicrafts',
-    'Areca and Bamboo Disposable Products',
-    'Premium Leather Goods',
-    'Bhut Jolokia (Ghost Pepper) Products',
-    'Agricultural Commodities',
-    'Handloom and Natural Fiber Products',
-    'Eco-Friendly Lifestyle Products',
-    'Processed Foods and Specialty Regional Products',
-  ],
+    'By combining traditional craftsmanship with modern quality standards and design principles, we help bring authentic products from Northeast India to domestic and international markets. Our product portfolio spans a wide range of categories, with some of our key focus areas being:',
 
   focusAreas: [
     {

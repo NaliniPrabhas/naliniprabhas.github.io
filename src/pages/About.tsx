@@ -65,34 +65,14 @@ export default function About() {
             </section>
           </Reveal>
 
-          {/* What We Do */}
+          {/* What We Do — the intro sentence runs straight into the focus
+              areas, so they share one section rather than two. */}
           <Reveal>
             <section id="what-we-do" className="scroll-mt-28">
               <Heading>What We Do</Heading>
               <p className="mt-5 font-body leading-relaxed text-gray-body">
                 {company.whatWeDoIntro}
               </p>
-              <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-                {company.productCategories.map((category) => (
-                  <li
-                    key={category}
-                    className="flex items-start gap-3 rounded-card border border-line bg-white p-4 font-body text-sm text-ink"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
-                    />
-                    {category}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </Reveal>
-
-          {/* Our Focus Areas */}
-          <Reveal>
-            <section id="focus-areas" className="scroll-mt-28">
-              <Heading>Our Focus Areas</Heading>
               <div className="mt-7 grid gap-6 sm:grid-cols-2">
                 {company.focusAreas.map((area) => (
                   <article
