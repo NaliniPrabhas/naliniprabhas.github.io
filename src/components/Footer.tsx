@@ -1,4 +1,4 @@
-import { footerColumns, socialIcons, trustBadges } from '../data/content'
+import { socialIcons, trustBadges } from '../data/content'
 import Logo from './Logo'
 
 export default function Footer() {
@@ -25,51 +25,34 @@ export default function Footer() {
       </section>
 
       <footer className="bg-ink text-white">
-        <div className="container-page grid gap-10 py-16 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+        {/* Brand on the left, socials pushed to the right edge; they stack
+            under the brand once there is no room for two columns. */}
+        <div className="container-page flex flex-col gap-10 py-16 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-xs">
             <Logo variant="light" />
             <p className="mt-5 text-sm leading-relaxed text-white/70">
               Complete your style with awesome clothes from us.
             </p>
-            <div className="mt-6 flex gap-4">
-              {socialIcons.map((social) => (
-                <a
-                  key={social.name}
-                  href="#"
-                  aria-label={social.name}
-                  // Icons are navy, so the chip stays light for contrast.
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-colors hover:bg-gold"
-                >
-                  <img
-                    src={social.icon}
-                    alt=""
-                    aria-hidden="true"
-                    className="h-4 w-4"
-                  />
-                </a>
-              ))}
-            </div>
           </div>
 
-          {footerColumns.map((column) => (
-            <div key={column.heading}>
-              <h6 className="text-sm font-semibold uppercase tracking-wider">
-                {column.heading}
-              </h6>
-              <ul className="mt-5 space-y-3">
-                {column.links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-sm text-white/70 transition-colors hover:text-gold"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="flex gap-4">
+            {socialIcons.map((social) => (
+              <a
+                key={social.name}
+                href="#"
+                aria-label={social.name}
+                // Icons are navy, so the chip stays light for contrast.
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-colors hover:bg-gold"
+              >
+                <img
+                  src={social.icon}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-4 w-4"
+                />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="border-t border-white/10">

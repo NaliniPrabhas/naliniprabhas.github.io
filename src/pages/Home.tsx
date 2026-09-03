@@ -3,25 +3,19 @@ import Categories from '../components/home/Categories'
 import Faq from '../components/home/Faq'
 import FeaturedProducts from '../components/home/FeaturedProducts'
 import Hero from '../components/home/Hero'
-import InstagramFeed from '../components/home/InstagramFeed'
-import Newsletter from '../components/home/Newsletter'
-import PaydaySale from '../components/home/PaydaySale'
 import PopularPicks from '../components/home/PopularPicks'
-import Testimonials from '../components/home/Testimonials'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <FeaturedProducts />
+      {/* Product sections, in nav order: Popular Picks, Specialities
+          (FeaturedProducts), then the category tiles. */}
       <PopularPicks />
-      <AboutBrand />
-      <PaydaySale />
+      <FeaturedProducts />
       <Categories />
-      <Testimonials />
+      <AboutBrand />
       <Faq />
-      <InstagramFeed />
-      <Newsletter />
     </>
   )
 }

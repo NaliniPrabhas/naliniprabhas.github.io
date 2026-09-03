@@ -5,7 +5,7 @@ import Reveal from '../Reveal'
 export default function Categories() {
   return (
     <section
-      id="specialities"
+      id="categories"
       className="container-page scroll-mt-20 py-16 lg:py-24"
     >
       <Reveal>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../Reveal'
+import { company } from '../../data/company'
 
 const images = [
   '/assets/img/about-img-01.jpg',
@@ -12,22 +13,23 @@ export default function AboutBrand() {
     <section id="about-us" className="container-page scroll-mt-20 py-16 lg:py-24">
       <div className="grid items-center gap-12 lg:grid-cols-2">
         <Reveal>
-          <h2 className="text-3xl font-bold sm:text-4xl">About the Brand</h2>
-          <p className="mt-5 font-body leading-relaxed text-gray-body">
-            We started in a single workshop with a simple idea: make gear that
-            holds up. Every pair is tested by people who actually run, hoop and
-            skate in them before it ever reaches a shelf.
-          </p>
-          <p className="mt-4 font-body leading-relaxed text-gray-body">
-            No shortcuts on materials, no seasonal gimmicks. Just well-made
-            pieces you can wear until they wear out, then replace with the same
-            model next year.
-          </p>
+          <p className="eyebrow">About us</p>
+          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+            {company.tagline}
+          </h2>
+          {company.summary.map((paragraph) => (
+            <p
+              key={paragraph}
+              className="mt-5 font-body leading-relaxed text-gray-body"
+            >
+              {paragraph}
+            </p>
+          ))}
           <Link
-            to="/collection"
+            to="/about"
             className="mt-8 inline-block rounded-card bg-navy px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-navy-dark"
           >
-            Shop now
+            Read our full story
           </Link>
         </Reveal>
 

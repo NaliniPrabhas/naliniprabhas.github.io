@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
+import About from './pages/About'
 import Collection from './pages/Collection'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
@@ -41,6 +42,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collection" element={<Collection />} />
+          <Route path="/about" element={<About />} />
           <Route path="/product/:slug" element={<ProductDetail />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />

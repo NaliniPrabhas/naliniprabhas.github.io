@@ -6,7 +6,7 @@ export const navLinks = [
   { label: 'Popular Products', to: '/#popular-products' },
   { label: 'Specialities', to: '/#specialities' },
   { label: 'Catalog', to: '/collection' },
-  { label: 'About Us', to: '/#about-us' },
+  { label: 'About Us', to: '/about' },
 ]
 
 export const drawerLinks = [
@@ -44,27 +44,6 @@ export const categories = [
   },
 ]
 
-export const testimonials = [
-  {
-    name: 'Client name',
-    rating: 4,
-    quote:
-      'Ordering was painless and the fit guide was accurate for once. The pair arrived two days early and looked exactly like the photos.',
-  },
-  {
-    name: 'Client name',
-    rating: 4,
-    quote:
-      'I have narrow feet and usually struggle. Support walked me through sizing over chat and got it right the first time.',
-  },
-  {
-    name: 'Client name',
-    rating: 5,
-    quote:
-      'Returned one item and the label was in my inbox within minutes. Refund cleared the same week. No complaints at all.',
-  },
-]
-
 export const faqs = [
   {
     question: 'What services does the studio offer?',
@@ -98,35 +77,11 @@ export const faqs = [
   },
 ]
 
-export const instagramPosts = [
-  '/assets/img/follow-instagram-products-01.jpg',
-  '/assets/img/follow-instagram-products-02.jpg',
-  '/assets/img/follow-instagram-products-03.jpg',
-  '/assets/img/follow-instagram-products-04.jpg',
-  '/assets/img/follow-instagram-products-05.jpg',
-  '/assets/img/follow-instagram-products-06.jpg',
-]
-
 export const trustBadges = [
   'Duties and Taxes Guaranteed',
   'Free Express Shipping',
   'Customer Love',
   'Easy Returns',
-]
-
-export const footerColumns = [
-  {
-    heading: 'Company',
-    links: ['About', 'Contact us', 'Support', 'Careers'],
-  },
-  {
-    heading: 'Quick Link',
-    links: ['Share Location', 'Orders Tracking', 'Size Guide', 'FAQs'],
-  },
-  {
-    heading: 'Legal',
-    links: ['Terms & conditions', 'Privacy Policy'],
-  },
 ]
 
 export const socialIcons = [

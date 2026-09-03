@@ -1,86 +1,56 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const VIDEO_ID = 'wWY_clozJlU'
-
 export default function Hero() {
-  const [playing, setPlaying] = useState(false)
-
   return (
-    <section className="relative overflow-hidden bg-surface">
-      <div className="container-page grid items-center gap-10 py-16 lg:grid-cols-2 lg:py-24">
-        <div>
-          <p className="eyebrow">The New 2023</p>
-          <h1 className="mt-4 text-5xl leading-[1.05] font-extrabold sm:text-6xl lg:text-7xl">
-            AIR JORDAN
+    <section className="relative isolate overflow-hidden bg-ink">
+      {/* Backdrop photograph. Two scrim layers sit on top: a flat wash that
+          guarantees contrast everywhere and a left-weighted gradient that keeps
+          the headline side darkest. */}
+      <img
+        src="/assets/img/hero-northeast.jpg"
+        alt=""
+        aria-hidden="true"
+        fetchPriority="high"
+        className="absolute inset-0 -z-10 h-full w-full object-cover brightness-110 saturate-105"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-ink/45 lg:bg-ink/25"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/80 via-ink/45 to-transparent"
+      />
+
+      <div className="container-page py-24 lg:py-36">
+        <div className="max-w-2xl">
+          <p className="eyebrow">Northeast India</p>
+          <h1 className="mt-4 text-4xl leading-[1.1] font-extrabold text-white sm:text-5xl lg:text-[3.5rem]">
+            Bringing the Seven Sister States of India to the World
           </h1>
-          <p className="mt-6 max-w-md font-body text-base leading-relaxed text-gray-body">
-            We know how large objects will act, but things on a small scale just
-            do not act that way. Built for the way you actually move.
+          <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-white/80">
+            Bamboo, leather, areca, handloom and Bhut Jolokia — sourced with
+            artisans, farmers and producer groups across Northeast India, and
+            supplied to buyers who care where their products come from.
           </p>
 
-          <div className="mt-9 flex items-center gap-6">
+          <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
             <Link
               to="/collection"
-              className="rounded-card bg-navy px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-navy-dark"
+              className="rounded-card bg-white px-8 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-white/90"
             >
-              Shop now
+              Explore the catalog
             </Link>
 
-            <button
-              type="button"
-              onClick={() => setPlaying(true)}
-              className="flex items-center gap-3 text-sm font-medium text-ink hover:text-navy"
+            <Link
+              to="/about"
+              className="text-sm font-semibold text-white hover:text-gold"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-md">
-                <img
-                  src="/assets/img/ic-play-dark.svg"
-                  alt=""
-                  aria-hidden="true"
-                  className="h-4 w-4"
-                />
-              </span>
-              Play Video
-            </button>
+              About us &rarr;
+            </Link>
           </div>
-        </div>
-
-        <div className="relative">
-          <img
-            src="/assets/img/banner-img-lg.png"
-            alt="Featured sneaker"
-            className="mx-auto w-full max-w-xl"
-          />
         </div>
       </div>
-
-      {/* Video lightbox */}
-      {playing && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-4"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Product video"
-        >
-          <button
-            type="button"
-            onClick={() => setPlaying(false)}
-            aria-label="Close video"
-            className="absolute top-6 right-6 text-3xl leading-none text-white"
-          >
-            &times;
-          </button>
-          <div className="aspect-video w-full max-w-4xl">
-            <iframe
-              src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1`}
-              title="Product video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="h-full w-full rounded-card"
-            />
-          </div>
-        </div>
-      )}
     </section>
   )
 }
