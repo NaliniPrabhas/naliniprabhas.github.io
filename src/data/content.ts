@@ -11,14 +11,6 @@ export const navLinks = [
   { label: 'About Us', to: '/about' },
 ]
 
-export const drawerLinks = [
-  { label: 'Shipping', to: '#' },
-  { label: 'Guides', to: '#' },
-  { label: 'Terms of Sale', to: '#' },
-  { label: 'Terms of Use', to: '#' },
-  { label: 'Privacy & Policy', to: '#' },
-]
-
 export const popularPicks = [
   '/assets/img/popular-picks-01.jpg',
   '/assets/img/popular-picks-02.jpg',

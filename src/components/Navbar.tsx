@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { drawerLinks, navLinks } from '../data/content'
+import { navLinks } from '../data/content'
 import Logo from './Logo'
 
 export default function Navbar() {
@@ -113,16 +113,6 @@ export default function Navbar() {
                 >
                   {link.label}
                 </Link>
-              </li>
-            ))}
-            {drawerLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.to}
-                  className="block border-b border-line py-3 text-sm text-gray-body"
-                >
-                  {link.label}
-                </a>
               </li>
             ))}
           </ul>
