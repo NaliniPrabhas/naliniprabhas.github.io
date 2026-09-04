@@ -15,7 +15,9 @@ export default function Catalog() {
   return (
     <>
       <PageBanner
+        variant="brand"
         title="Catalog"
+        subtitle="Everything we carry, sourced from across the Seven Sister States of Northeast India."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Catalog' }]}
       />
 

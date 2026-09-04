@@ -12,6 +12,9 @@
   --color-gray-muted: #666666;
   --color-surface: #f3f3f3;
   --color-surface-alt: #eeeeee;
+  /* Pale warm/cool tints used for soft section washes. */
+  --color-cream: #fdfaf1;
+  --color-mist: #edf2f9;
   --color-line: #e2e2e2;
   --color-gold: #e0c340;
   --color-gold-light: #fbcf33;

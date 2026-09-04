@@ -52,7 +52,9 @@ export default function Specialities() {
   return (
     <>
       <PageBanner
+        variant="brand"
         title={isCategory(category) ? category : 'Specialities'}
+        subtitle="Bamboo, leather, Bhut Jolokia and areca-leaf disposables — the four things we know best."
         crumbs={
           isCategory(category)
             ? [

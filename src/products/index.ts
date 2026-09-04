@@ -7,14 +7,14 @@
  * page derives its filters and its listing from `products`.
  */
 import arecaLeafPlates from './areca-leaf-plates/product'
-import bambooCaneStool from './bamboo-cane-stool/product'
+import bambooCaneFurnitureSet from './bamboo-cane-5-piece-furniture/product'
 import bhutJolokiaChilliPaste from './bhut-jolokia-chilli-paste/product'
 import leatherWeekenderBag from './leather-weekender-bag/product'
 import { productCategories, type Product, type ProductCategory } from './types'
 
 /** Grouped by category, so a new product is added under one obvious key. */
 export const productsByCategory: Record<ProductCategory, Product[]> = {
-  'Bamboo Products': [bambooCaneStool],
+  'Bamboo Products': [bambooCaneFurnitureSet],
   'Leather Products': [leatherWeekenderBag],
   'Bhut Jolokia': [bhutJolokiaChilliPaste],
   'Disposable Products': [arecaLeafPlates],

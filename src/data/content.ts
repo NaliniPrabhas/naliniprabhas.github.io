@@ -23,9 +23,9 @@ export const popularPicks = [
   '/assets/img/popular-picks-01.jpg',
   '/assets/img/popular-picks-02.jpg',
   '/assets/img/popular-picks-03.jpg',
-  '/assets/img/popular-picks-01.jpg',
-  '/assets/img/popular-picks-02.jpg',
-  '/assets/img/popular-picks-03.jpg',
+  '/assets/img/popular-picks-04.jpg',
+  '/assets/img/popular-picks-05.jpg',
+  '/assets/img/popular-picks-06.jpg',
 ]
 
 /**
@@ -39,7 +39,7 @@ export const categories: { title: ProductCategory; image: string; to: string }[]
       ['Bamboo Products', '/assets/img/categories-img-01.jpg'],
       ['Leather Products', '/assets/img/categories-img-02.jpg'],
       ['Bhut Jolokia', '/assets/img/categories-img-03.jpg'],
-      ['Disposable Products', '/assets/img/popular-picks-01.jpg'],
+      ['Disposable Products', '/assets/img/categories-img-04.jpg'],
     ] as const
   ).map(([title, image]) => ({
     title,
